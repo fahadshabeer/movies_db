@@ -24,10 +24,12 @@ class PopularityWidget extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerRight,
               padding: EdgeInsets.all(5.sp),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(
-                    "${(averagePopularity*10).toStringAsFixed(1)}%"
+              child: Center(
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                      "${(averagePopularity*10).toStringAsFixed(1)}%"
+                  ),
                 ),
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:movies_db/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:movies_db/views/screens/movies_details_screen/reusable_widgets/movie_cover_widget.dart';
+import 'package:movies_db/views/shared_components/custom_error_widget.dart';
 
 class MoviesDetailsScreen extends StatefulWidget {
   final int movieId;
@@ -32,62 +33,27 @@ class _MoviesDetailsScreenState extends State<MoviesDetailsScreen> {
           ..getDetails(widget.movieId),
         child: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
           builder: (context, state) {
-            if(state is MovieDetailsLoaded) {
-              final model=state.model;
-              return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                MovieCoverWidget(
+            if (state is MovieDetailsLoading) {
+              return MovieCoverWidget();
+            }
+            if (state is MovieDetailsError) {
+              return Center(
+                child: CustomErrorWidget(
+                    msg: state.err,
+                    onReload: () =>
+                        context.read<MovieDetailsCubit>().getDetails(
+                            widget.movieId)
+                ),
+              );
+            }
+            if (state is MovieDetailsLoaded) {
+              final model = state.model;
+              return SingleChildScrollView(
+                child: MovieCoverWidget(
                   movieDetailsModel: model,
                 ),
-                20.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.sp),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        model.status??"N/A",
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w600
-                        ),
-                      ),
-                      10.horizontalSpace,
-                      SizedBox(height: 20.sp, child: VerticalDivider(color: Colors.grey,)),
-                      10.horizontalSpace,
-                      Text(
-                        model.releaseDate!=null?DateFormat(DateFormat.YEAR_ABBR_MONTH_DAY).format(model.releaseDate!).toUpperCase():"--/--/----",
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w600
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                20.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.sp),
-                  child: Text(
-                    "Overview",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                5.verticalSpace,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.sp),
-                  child: Text(
-                   model.overview??"N/A",
-                    style: TextStyle(fontSize: 13.sp),
-                  ),
-                )
-              ],
-            );
-            }else{
+              );
+            } else {
               return SizedBox.shrink();
             }
           },

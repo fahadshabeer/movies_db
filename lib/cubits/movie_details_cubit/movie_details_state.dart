@@ -13,4 +13,7 @@ final class MovieDetailsLoaded extends MovieDetailsState {
   MovieDetailsLoaded({required this.model});
 }
 
-final class MovieDetailsError extends MovieDetailsState {}
+final class MovieDetailsError extends MovieDetailsState {
+  final String err;
+  MovieDetailsError({required this.err});
+}

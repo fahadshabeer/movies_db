@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_db/cubits/add_rmv_favorite_cubit/add_rmv_favorite_cubit.dart';
+import 'package:movies_db/models/movies_model.dart';
 
 class CustomFavouriteBtn extends StatefulWidget {
-  const CustomFavouriteBtn({super.key});
+  final int movieId;
+  final bool isFav;
+  final Result movie;
+  const CustomFavouriteBtn({super.key,required this.movieId,required this.movie,required this.isFav});
 
   @override
   State<CustomFavouriteBtn> createState() => _CustomFavouriteBtnState();
@@ -21,6 +27,11 @@ class _CustomFavouriteBtnState extends State<CustomFavouriteBtn> {
     if (isResetStat) {
       isResetStat=false;
       updateState();
+      if(!widget.isFav) {
+        context.read<AddRmvFavoriteCubit>().addFav(widget.movie);
+      }else{
+        context.read<AddRmvFavoriteCubit>().rmvFav(widget.movie.id??0);
+      }
       Future.delayed(Duration(milliseconds: 300),(){
         isResetStat=true;
         updateState();
@@ -43,7 +54,7 @@ class _CustomFavouriteBtnState extends State<CustomFavouriteBtn> {
         height: 30.sp,
         width: 30.sp,
         decoration: BoxDecoration(
-            color: Theme.of(context).appBarTheme.backgroundColor,
+            color: widget.isFav?Theme.of(context).colorScheme.primary:Theme.of(context).appBarTheme.backgroundColor,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(

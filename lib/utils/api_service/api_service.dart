@@ -11,7 +11,6 @@ class ApiManager {
   }
 
   ApiManager._internal() {
-
     _dio = Dio(BaseOptions(
       baseUrl: BackendApis.baseUrl,
       connectTimeout: const Duration(seconds: 4),
@@ -47,20 +46,19 @@ class ApiManager {
     return null;
   }
 
-  Future<T> getRequest<T>(String endpoint, {Map<String, dynamic>? queryParams}) async {
+  Future<T> getRequest<T>(String endpoint,
 
-      Response response = await _dio.get(endpoint, queryParameters: queryParams);
-      return response.data as T;
+      {CancelToken? cancelToken,Map<String, dynamic>? queryParams}) async {
+    Response response = await _dio.get(
+        endpoint,cancelToken: cancelToken, queryParameters: queryParams);
+    return response.data as T;
   }
 
-  Future<T> postRequest<T>(String endpoint, {dynamic data, Map<String, dynamic>? queryParams}) async {
+  Future<T> postRequest<T>(String endpoint,
+      {dynamic data, Map<String, dynamic>? queryParams}) async {
     try {
-
-      Response response = await _dio.post(
-          endpoint,
-          data: data,
-          queryParameters: queryParams
-      );
+      Response response =
+          await _dio.post(endpoint, data: data, queryParameters: queryParams);
       return response.data as T;
     } on DioException catch (e) {
       log("Dio Error: ${e.message}", error: e);

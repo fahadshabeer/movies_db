@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:movies_db/models/movie_details_model.dart';
 import 'package:movies_db/models/movies_model.dart';
 import 'package:movies_db/utils/api_service/api_service.dart';
@@ -10,9 +11,10 @@ class MoviesRepo {
     return MoviesModel.fromJson(res);
   }
 
-  static Future<MovieDetailsModel> movieDetailsById({required int id}) async {
+  static Future<MovieDetailsModel> movieDetailsById({required int id,CancelToken? cancelToken}) async {
     var res = await ApiManager().getRequest<dynamic>(
         "${BackendApis.movieDetails}$id",
+        cancelToken: cancelToken,
         queryParams: {"api_key": BackendApis.apiKey});
     return MovieDetailsModel.fromJson(res);
   }

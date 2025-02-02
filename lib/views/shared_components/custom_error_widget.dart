@@ -23,7 +23,9 @@ class CustomErrorWidget extends StatelessWidget {
         SizedBox(
           width: 0.5.sw,
           child: CustomButton(
+
             height: 43.sp,
+            color: Theme.of(context).colorScheme.primary,
             text: "Reload",
             textStyle: const TextStyle(
                 color: Colors.white

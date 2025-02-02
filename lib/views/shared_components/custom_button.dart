@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,15 +12,14 @@ class CustomButton extends StatelessWidget {
   final TextStyle? textStyle;
 
   const CustomButton(
-      {Key? key,
-        required this.onTap,
-        this.text,
-        this.height,
-        this.isLoading = false,
-        this.color,
-        this.width,
-        this.textStyle})
-      : super(key: key);
+      {super.key,
+      required this.onTap,
+      this.text,
+      this.height,
+      this.isLoading = false,
+      this.color,
+      this.width,
+      this.textStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +28,18 @@ class CustomButton extends StatelessWidget {
       height: height,
       minWidth: width,
       disabledColor: Colors.grey,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.r),
-      ),
+      shape: StadiumBorder(),
       onPressed: onTap,
       child: Center(
-        child: isLoading == true ? const CircularProgressIndicator():FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            text??"",
-            style: textStyle,
-          ),
-        ),
+        child: isLoading == true
+            ? const CircularProgressIndicator()
+            : FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  text ?? "",
+                  style: textStyle,
+                ),
+              ),
       ),
     );
   }
