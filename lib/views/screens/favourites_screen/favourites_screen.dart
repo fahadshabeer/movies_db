@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_db/cubits/fetch_favorites_cubit/fetch_favorites_cubit.dart';
+import 'package:movies_db/views/shared_components/custom_error_widget.dart';
 import 'package:movies_db/views/shared_components/loading_components/loading_grid.dart';
 import 'package:movies_db/views/shared_components/movie_tile.dart';
 
@@ -16,8 +17,11 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
 
   @override
   void initState() {
-    context.read<FetchFavoritesCubit>().loadFav();
+  loadData();
     super.initState();
+  }
+  loadData(){
+    context.read<FetchFavoritesCubit>().loadFav();
   }
   @override
   Widget build(BuildContext context) {
@@ -25,11 +29,14 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
       appBar: AppBar(
         title: Text("Favourites"),
       ),
-      body: BlocConsumer<FetchFavoritesCubit, FetchFavoritesState>(
-        listener: (context, state) {
+      body: BlocBuilder<FetchFavoritesCubit, FetchFavoritesState>(
 
-        },
         builder: (context, state) {
+          if(state is FetchFavoritesError){
+            return Center(
+              child: CustomErrorWidget(msg: state.err, onReload: loadData),
+            );
+          }
           if(state is  FetchFavoritesLoaded) {
             final favorites=state.favorites;
             return favorites.isEmpty?

@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movies_db/models/movies_model.dart';
-import 'package:movies_db/utils/constants/const_data.dart';
 
 class FavoriteRepos {
   static final _ref = FirebaseFirestore.instance.collection("favorite_movies");

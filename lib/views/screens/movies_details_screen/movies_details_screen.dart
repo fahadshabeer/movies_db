@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:movies_db/cubits/movie_details_cubit/movie_details_cubit.dart';
 import 'package:movies_db/views/screens/movies_details_screen/reusable_widgets/movie_cover_widget.dart';
 import 'package:movies_db/views/shared_components/custom_error_widget.dart';

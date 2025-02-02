@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_db/utils/constants/backend_apis.dart';
 import 'package:movies_db/views/shared_components/image_loading_effect.dart';
 
 class CustomCachedImage extends StatelessWidget {

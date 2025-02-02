@@ -1,20 +1,16 @@
 import 'dart:developer';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:movies_db/cubits/fetch_favorites_cubit/fetch_favorites_cubit.dart';
-import 'package:movies_db/cubits/fetch_movies_cubit/fetch_movies_cubit.dart';
 import 'package:movies_db/models/movies_model.dart';
-import 'package:movies_db/utils/constants/app_colors.dart';
 import 'package:movies_db/utils/constants/backend_apis.dart';
 import 'package:movies_db/views/screens/movies_details_screen/movies_details_screen.dart';
-import 'package:movies_db/views/shared_components/custom_favourite_btn.dart';
 import 'package:movies_db/views/screens/movies_screen/reusable_widgets/popularity_widget.dart';
 import 'package:movies_db/views/shared_components/custom_cached_image.dart';
-import 'package:movies_db/views/shared_components/image_loading_effect.dart';
+import 'package:movies_db/views/shared_components/custom_favourite_btn.dart';
 
 class MovieTile extends StatelessWidget {
   final Result result;

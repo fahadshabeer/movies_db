@@ -8,7 +8,7 @@ import 'package:movies_db/cubits/fetch_favorites_cubit/fetch_favorites_cubit.dar
 import 'package:movies_db/cubits/fetch_movies_cubit/fetch_movies_cubit.dart';
 import 'package:movies_db/cubits/theme_cubit/theme_cubit.dart';
 import 'package:movies_db/utils/constants/app_colors.dart';
-import 'package:movies_db/views/screens/movies_screen/movies_screen.dart';
+import 'package:movies_db/utils/shared_prefs/shared_prefs.dart';
 import 'package:movies_db/views/screens/root_screen/root_screen.dart';
 
 import 'firebase_options.dart';
@@ -18,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await SharedPrefs.init();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -42,9 +43,9 @@ class MyApp extends StatelessWidget {
         designSize: Size(375, 812),
         minTextAdapt: true,
         child: BlocBuilder<ThemeCubit, bool>(
-          builder: (context, isDarkMode) {
+          builder: (context, isLightMode) {
             return MaterialApp(
-              theme: isDarkMode ? AppColors.dark : AppColors.light,
+              theme: isLightMode ? AppColors.dark : AppColors.light,
               home: RootScreen(),
             );
           },

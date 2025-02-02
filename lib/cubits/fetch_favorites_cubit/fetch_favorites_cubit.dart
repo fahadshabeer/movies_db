@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:movies_db/models/favorite_model.dart';
 import 'package:movies_db/models/movies_model.dart';
 import 'package:movies_db/utils/repos/favorite_repos.dart';
 

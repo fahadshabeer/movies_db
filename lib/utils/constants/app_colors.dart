@@ -1,8 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_db/models/theme_model.dart';
 
 class AppColors {
   static final dark = ThemeData(

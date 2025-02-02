@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:movies_db/utils/shared_prefs/shared_prefs.dart';
 
 
 
@@ -8,9 +8,11 @@ class ThemeCubit extends Cubit<bool> {
     loadTheme();
   }
   switchTheme(){
-
-    emit(!state);
+    SharedPrefs.setLightMode(!state);
+    loadTheme();
   }
-  void loadTheme() {}
+  void loadTheme() {
+    emit(SharedPrefs.isLightMode());
+  }
 
 }

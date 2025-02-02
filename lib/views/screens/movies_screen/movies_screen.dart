@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:movies_db/cubits/fetch_movies_cubit/fetch_movies_cubit.dart';
 import 'package:movies_db/models/movies_model.dart';
-import 'package:movies_db/views/shared_components/movie_tile.dart';
 import 'package:movies_db/views/shared_components/custom_paginated_Gridview.dart';
+import 'package:movies_db/views/shared_components/movie_tile.dart';
 import 'package:movies_db/views/shared_components/theme_toggle_btn.dart';
 
 class MoviesScreen extends StatefulWidget {
