@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "812972100101",
+    "project_id": "example-97544",
+    "storage_bucket": "example-97544.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812972100101:android:b2841d5dc5533b7660ea6c",
+        "android_client_info": {
+          "package_name": "com.example.movies_db"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812972100101-a36j2sb2t8rgj1mascf48m2ofmltvofq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj43k09Bmhu82hF_D4xFgEZHkL_oKtzV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812972100101-a36j2sb2t8rgj1mascf48m2ofmltvofq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "812972100101-gnkervfas0kj4rt55lobins02r159uqv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jmmtech.net.login-ui"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
